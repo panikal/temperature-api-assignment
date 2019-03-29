@@ -24,21 +24,23 @@ let kelvin = 273.15; //C -> K constant
 var server  = restify.createServer();
 server.get('/temperature', tempQuery);
 server.get('/temperature/:city', tempQuery);
-//server.get('/temperature/status', statusQuery);
 server.listen(8080, function() {
     console.log('%s listening at %s', server.name, server.url);
 });
 
 
-//functions
+// controller functions
 async function tempQuery(req, res, next) {
     let city = "Portland,Oregon";
+    // if a city param exists, we'll override our default
     if (req.params.hasOwnProperty('city')) {
         city = req.params.city;
     }
     let temp = await get_temperature(city);
     res.send(temp);
 }
+
+// Helper functions
 
 function get_weather_data(city, now) {
     return fetch(apiurl + city + "&appid=" + apikey)
@@ -50,10 +52,14 @@ function get_weather_data(city, now) {
             update_to_db(city, temperature, now);
             return temperature
         }
+        else {
+            return
+        }
+    })
+    .catch(err => {
+        return
     })
 }
-
-///////// TODO - make this reutrn the value, currently inner is not returning anything. 
 
 function query_from_db(city) {
     return new Promise((resolve,reject) => {
@@ -92,9 +98,18 @@ async function get_temperature(city) {
                 temperature = await get_weather_data(city, now);
             }
         }
+        // its the first time we're querying the data so DB returned nothing
         else {
             temperature = await get_weather_data(city, now);
-        }    
+        }
+        // If there's no temperature, either API is broken or a bad city query
+        if (!temperature) {
+            return {error: "Error retreiving weather from API"}
+        }
+        // We made it here, all is OK, return our data
         return { temperature: temperature, query_time: moment().format('llll') }
+    })
+    .catch(err => {
+        return { error: err }
     })
 }
