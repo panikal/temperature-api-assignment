@@ -1,0 +1,19 @@
+{
+  "name": "temperature-app",
+  "version": "0.0.1",
+  "description": "API to provide temperature based on city",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Kal Aeolian <kalielaeolian@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "node-fetch": "^2.3.0",
+    "restify": "^8.2.0",
+    "sqlite": "^3.0.3",
+    "sqlite3": "^4.0.6",
+    "sqlite3-upsert": "^1.0.0"
+  }
+}
