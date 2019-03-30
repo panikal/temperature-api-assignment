@@ -4,7 +4,9 @@
   "description": "API to provide temperature based on city",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test.js"
+    "test" : "node ./test.js",
+    "start" : "node ./index.js temperature-app",
+    "stop" : "killall -SIGINT temperature-app"
   },
   "author": "Kal Aeolian <kalielaeolian@gmail.com>",
   "license": "ISC",

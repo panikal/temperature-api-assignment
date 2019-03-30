@@ -5,6 +5,9 @@ const sqlite3 = require('sqlite3');
 const upsert  = require('sqlite3-upsert')
 const moment  = require('moment');
 
+// Allow to stop with npm stop
+process.title = process.argv[2];
+
 //initialize SQLite DB connection
 let db = new sqlite3.Database('./weather.db', sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
