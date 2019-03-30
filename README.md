@@ -49,6 +49,12 @@ curl http://localhost:8080/temperature/London,UK
 curl http://localhost:8080/temperature/Brussels,Belgium
 ```
 
+### To test:
+
+```
+npm test
+```
+
 ## Future improvements
 - Better testing, use an actual test framework (seems overkill to use a large framework for a single API end point with a single function)
 - Conversion between C/K/F using a query param where scale = [faranheit|celsius|kelvin]
