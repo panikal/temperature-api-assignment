@@ -31,11 +31,13 @@ server.listen(8080, function() {
 
 // controller functions
 async function tempQuery(req, res, next) {
+    // By default assignment requires data for Portland, Oregon
     let city = "Portland,Oregon";
     // if a city param exists, we'll override our default
     if (req.params.hasOwnProperty('city')) {
         city = req.params.city;
     }
+    city = city.replace(", ", ",")
     let temp = await get_temperature(city);
     res.send(temp);
 }
