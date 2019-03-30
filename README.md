@@ -19,7 +19,7 @@ sqlite3 weather.db
 5. Create the table needed:
 
 ```
-CREATE TABLE temperature (city text, temperature text, time number);
+CREATE TABLE temperature (city text, temperature number, time number);
 ```
 
 6. Press CTRL-D to exit the sqlite3 prompt
@@ -48,3 +48,7 @@ Rest of world:
 curl http://localhost:8080/temperature/London,UK
 curl http://localhost:8080/temperature/Brussels,Belgium
 ```
+
+## Future improvements
+- Better testing, use an actual test framework (seems overkill to use a large framework for a single API end point with a single function)
+- Conversion between C/K/F using a query param where scale = [faranheit|celsius|kelvin]
