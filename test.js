@@ -11,19 +11,19 @@ fetch("http://localhost:8080/temperature")
     console.log("Passed test #1, no query")
 })
 .catch(err => {
-    console.error("Test failed!!!")
+    console.error("Test #1 failed!!!")
 })
 //test 2 - a city placeholder
 fetch("http://localhost:8080/temperature/Paris,France")
 .then(async res => {
     let j = await res.json()
     console.log("Test #2")
-    assert(j.hasOwnProperty('teperature'));
+    assert(j.hasOwnProperty('temperature'));
     assert(j.hasOwnProperty('query_time'));
     console.log("Passed test #2, Normal query")
 })
 .catch(err => {
-    console.error("Test failed!!!")
+    console.error("Test #2 failed!!!")
 })
 //test 3 - City with space in name
 fetch("http://localhost:8080/temperature/Los Angeles,California")
@@ -35,7 +35,7 @@ fetch("http://localhost:8080/temperature/Los Angeles,California")
     console.log("Passed test #3, city with a space in the name")  
 })
 .catch(err => {
-    console.error("Test failed!!!")
+    console.error("Test #3 failed!!!")
 })
 //test 4 - Bad query
 fetch("http://localhost:8080/temperature/B$!&")
@@ -46,5 +46,5 @@ fetch("http://localhost:8080/temperature/B$!&")
     console.dir(j)
 })
 .catch(err => {
-    console.error("Test failed!!!")
+    console.error("Test #4 failed!!!")
 })

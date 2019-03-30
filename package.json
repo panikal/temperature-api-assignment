@@ -4,7 +4,7 @@
   "description": "API to provide temperature based on city",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "node ./test.js"
   },
   "author": "Kal Aeolian <kalielaeolian@gmail.com>",
   "license": "ISC",
