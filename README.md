@@ -1,41 +1,38 @@
-va# Temperature API Assignment
+# Temperature API Assignment
 
-## Installation
+## Automatic Installation
 
 1. Clone this repository
-2. Ensure system dependencies are installed ( nodejs | npm | sqlite3 )
-3. Install dependencies
+2. Ensure system dependencies are installed ( vagrant | sqlite3 )
+3. Start vagrant
+
+## Manual Installation
+
+
+
+1. Install dependencies ( sqlite3 | nodejs | npm )
+
+2. Install node modules
 
 ```
 npm install
 ```
 
-4. In the newly cloned repository run the following command:
+3. Run the application:
 
 ```
-sqlite3 weather.db
+npm start
 ```
 
-5. Create the table needed:
+## Usage
 
-```
-CREATE TABLE temperature (city text, temperature number, time number);
-```
-
-6. Press CTRL-D to exit the sqlite3 prompt
-7. Run the application:
-
-```
-node ./index.js
-```
-
-8. You can get the temperature for Portland, Oregon like this:
+1. You can get the temperature for Portland, Oregon like this:
 
 ```
 curl http://localhost:8080/temperature
 ```
 
-9. For other cities, it is the City,State (if USA) or City,Country. Examples:
+2. For other cities, it is the City,State (if USA) or City,Country. Examples:
 USA:
 
 ```

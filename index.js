@@ -9,12 +9,14 @@ const moment  = require('moment');
 process.title = process.argv[2];
 
 //initialize SQLite DB connection
-let db = new sqlite3.Database('./weather.db', sqlite3.OPEN_READWRITE, (err) => {
+let db = new sqlite3.Database('./weather.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
   if (err) {
     console.error(err.message);
   }
   console.log('Connected to the weather database.');
 });
+
+db.run("CREATE TABLE IF NOT EXISTS temperature (city string, temperature number, time number)");
 
 var upsert_temperature = upsert({table: 'temperature', key: 'city', db: db})
 
