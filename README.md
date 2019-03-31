@@ -55,6 +55,11 @@ curl http://localhost:8080/temperature/Brussels,Belgium
 npm test
 ```
 
+## Notes
+ 
+- You may need to run ```vagrant plugin install vagrant-vbguest``` and then run ```vagrant reload``` if you see a message about vboxsf not supported or have problems running puppet
+
 ## Future improvements
+
 - Better testing, use an actual test framework (seems overkill to use a large framework for a single API end point with a single function)
 - Conversion between C/K/F using a query param where scale = [faranheit|celsius|kelvin]
